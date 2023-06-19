@@ -14,9 +14,9 @@ const User = ({
   active: boolean;
 }) => {
   return (
-    <div className="flex items-center max-w-[200px] min-h-[50px]">
+    <div className="flex items-center max-w-[200px] min-h-[50px] gap-[12px]">
       <div className="relative">
-        <Image src={avatar} alt="Avatar" height={80} width={80} />
+        <Image src={avatar} alt="Avatar" height={65} width={65} />
         {active && (
           <div className="absolute left-12 top-12">
             <Icons.active />
