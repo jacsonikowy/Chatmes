@@ -7,9 +7,25 @@
 }
 
 .primary {
-  @apply max-w-[190px] min-h-[56px] flex justify-between p-[20px] rounded bg-primary text-white;
+  @apply max-w-[190px] min-h-[56px] flex justify-between p-[20px] rounded bg-primary text-white hover:bg-green-700 active:bg-green-900;
 }
 
 .primaryArrow {
-  @apply min-w-[141px] min-h-[47px] md:min-w-[190px] md:min-h-[56px] flex justify-between p-[20px] gap-[13px] rounded bg-primary text-white;
+  @apply min-w-[141px] min-h-[47px] md:min-w-[190px] md:min-h-[56px] flex justify-between p-[20px] gap-[13px] rounded bg-primary text-white hover:bg-green-700 active:bg-green-900;
+}
+
+.primaryText {
+  @apply bg-primary text-white text-[16px] py-[14px] px-[16px] min-h-[39px] rounded-xl border-2 border-white shadow-md;
+}
+
+.secondaryText {
+  @apply bg-white text-black text-[16px] py-[14px] px-[16px] min-h-[39px] rounded-xl border-2 border-[#B3B3B3] shadow-md;
+}
+
+.primaryLogin {
+  @apply flex items-center gap-[12px] min-w-[151px] sm:min-w-[390px] min-h-[40px] sm:min-h-[40px] text-[8px] sm:text-[14px] bg-white dark:text-black rounded-lg shadow-lg p-[8px] hover:bg-slate-100 active:bg-slate-300;
+}
+
+.githubLogin {
+  @apply flex items-center gap-[22px] sm:gap-[28px] min-w-[151px] sm:min-w-[390px] max-h-[40px] sm:max-h-[40px] text-white text-[8px] sm:text-[14px] bg-[#222222] rounded-lg shadow-lg p-[8px];
 }
