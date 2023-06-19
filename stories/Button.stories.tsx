@@ -23,3 +23,17 @@ export const Secondary: Story = {
     variant: "primaryArrow",
   },
 };
+
+export const Google: Story = {
+  args: {
+    text: "Sign in with Google",
+    variant: "primaryLogin",
+  },
+};
+
+export const Github: Story = {
+  args: {
+    text: "Sign in with Github",
+    variant: "githubLogin",
+  },
+};

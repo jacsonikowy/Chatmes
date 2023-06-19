@@ -1,7 +1,7 @@
 import User from "../components/User";
 import { Meta } from "@storybook/react";
 import { StoryObj } from "@storybook/react";
-import man from "../public/Ellipse 10.png";
+import man from "../public/Man.png";
 
 const meta: Meta<typeof User> = {
   component: User,
