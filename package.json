@@ -11,10 +11,13 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@auth/upstash-redis-adapter": "^1.0.0",
+    "@next-auth/prisma-adapter": "^0.4.4-canary.81",
     "@radix-ui/react-toast": "^1.1.4",
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
+    "@upstash/redis": "^1.21.0",
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
@@ -41,7 +44,8 @@
     "@storybook/react": "^7.0.22",
     "@storybook/testing-library": "^0.0.14-next.2",
     "eslint-plugin-storybook": "^0.6.12",
-    "prisma": "^4.15.0",
-    "storybook": "^7.0.22"
+    "next-themes": "^0.2.1",
+    "storybook": "^7.0.22",
+    "storybook-tailwind-dark-mode": "^1.0.22"
   }
 }
