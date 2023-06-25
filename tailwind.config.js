@@ -18,12 +18,13 @@ module.exports = {
       },
       textColor: {
         'primary': '#00B086',
-        'secondary': '#8C8C8C'
+        'secondary': '#8C8C8C',
+        'danger': '#E70000'
       },
       fontFamily: {
         'poppins': ["Poppins", 'sans-serif']
       }
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 }
