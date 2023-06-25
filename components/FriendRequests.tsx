@@ -49,7 +49,7 @@ const FriendRequests = ({
       );
       pusherClient.unbind("incoming_friends_requests", handleBind);
     };
-  }, [session.user.id]);
+  }, [session.user.id, toast]);
 
   return (
     <div className="ml-[64px] mt-[72px]">

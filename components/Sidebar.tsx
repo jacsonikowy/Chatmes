@@ -33,7 +33,7 @@ const Sidebar = ({ friendRequestsDb }: { friendRequestsDb: number }) => {
       );
       pusherClient.unbind("incoming_friends_requests", handleBind);
     };
-  }, [friendRequests]);
+  }, [friendRequests, session?.user.id]);
 
   const currentRoute = usePathname();
   return (

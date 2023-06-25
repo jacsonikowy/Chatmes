@@ -1,8 +1,7 @@
 import { db } from "@/lib/db";
 import { z } from "zod";
-import { addFriendValidator } from "@/lib/validations/add-friend";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 export const POST = async (req: Request) => {
   try {

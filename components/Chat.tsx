@@ -22,12 +22,6 @@ const Chat = ({ chatId, data }: { chatId: string; data: Message[] }) => {
     pusherClient.subscribe(toPusherKey(`chat:${chatId}:messages`));
     const bindHandler = ({ message }: { message: Message }) => {
       setMessages((prev) => [...prev, message]);
-      if (url !== `/messages/chat/${chatId}`) {
-        toast({
-          title: `Message from ${friend.name}`,
-          description: `You got new message!`,
-        });
-      }
     };
     pusherClient.bind(`messages`, bindHandler);
 
@@ -35,7 +29,7 @@ const Chat = ({ chatId, data }: { chatId: string; data: Message[] }) => {
       pusherClient.unsubscribe(toPusherKey(`chat:${chatId}:messages`));
       pusherClient.unbind(`messages`, bindHandler);
     };
-  }, [messages]);
+  }, [messages, chatId]);
 
   if (friend.id === null) {
     return (

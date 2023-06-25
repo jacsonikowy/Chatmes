@@ -1,7 +1,6 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import Chat from "@/components/Chat";
 import { db } from "@/lib/db";
-import { getServerSession } from "next-auth";
 import React from "react";
 
 interface PageProps {

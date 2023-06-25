@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { Session, getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 export const POST = async (req: Request) => {
   try {

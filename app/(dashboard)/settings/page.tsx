@@ -1,11 +1,10 @@
 "use client";
-import Sidebar from "@/components/Sidebar";
 import React from "react";
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
-import { toast, useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
-const page = () => {
+const Page = () => {
   const theme = useTheme();
   const { toast } = useToast();
 
@@ -52,4 +51,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

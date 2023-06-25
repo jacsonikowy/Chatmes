@@ -1,6 +1,6 @@
 import { db } from "@/lib/db";
 import { addFriendValidator } from "@/lib/validations/add-friend";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import { pusherServer } from "@/lib/pusher";
 import { toPusherKey } from "@/lib/utils";

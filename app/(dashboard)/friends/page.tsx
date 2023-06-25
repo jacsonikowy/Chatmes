@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import AddFriend from "@/components/AddFriend";
 import { db } from "@/lib/db";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import { userId } from "@/types/next-auth";
 import { pusherClient } from "@/lib/pusher";
 import { toPusherKey } from "@/lib/utils";
