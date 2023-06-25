@@ -8,7 +8,7 @@ export default async function DashboardLayout({
 }) {
   const session = await getServerSession();
   if (session) {
-    redirect("/dashboard");
+    redirect("/messages");
   }
 
   return <>{children}</>;
