@@ -29,3 +29,7 @@
 .githubLogin {
   @apply flex items-center gap-[22px] sm:gap-[28px] min-w-[151px] sm:min-w-[390px] max-h-[40px] sm:max-h-[40px] text-white text-[8px] sm:text-[14px] bg-[#222222] rounded-lg shadow-lg p-[8px];
 }
+
+.active {
+  @apply text-primary;
+}
