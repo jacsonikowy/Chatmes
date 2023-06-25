@@ -5,6 +5,7 @@ import { NextAuthOptions } from "next-auth";
 import { db } from "@/lib/db";
 import { UpstashRedisAdapter } from "@auth/upstash-redis-adapter";
 import type { Adapter } from "next-auth/adapters";
+import { error } from "console";
 
 export const authOptions: NextAuthOptions = {
   adapter: UpstashRedisAdapter(db) as Adapter,
@@ -27,9 +28,10 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ session, token }) {
       if (token) {
-        session.user!.email = token.email;
-        session.user!.image = token.picture;
-        session.user!.name = token.name;
+        session.user.id = token.id;
+        session.user.email = token.email;
+        session.user.image = token.image as string;
+        session.user.name = token.name;
       }
 
       return session;
