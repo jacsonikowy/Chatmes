@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Theme from "@/components/Theme";
 import Provider from "@/components/Provider";
 import { Session } from "next-auth";
+import QueryProvider from "@/components/QueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +24,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Theme>
-          <Provider session={session}>
-            {children}
-            <Toaster />
-          </Provider>
+          <QueryProvider>
+            <Provider session={session}>
+              {children}
+              <Toaster />
+            </Provider>
+          </QueryProvider>
         </Theme>
       </body>
     </html>
