@@ -71,4 +71,54 @@ export const Icons = {
       />
     </svg>
   ),
+  send: () => (
+    <svg
+      width="56"
+      height="56"
+      viewBox="0 0 56 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="28" cy="28" r="28" fill="#00B086" />
+      <path
+        d="M37.5 18.5L23.75 32.25"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M37.5 18.5L28.75 43.5L23.75 32.25L12.5 27.25L37.5 18.5Z"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  ),
+  check: () => (
+    <svg
+      width="31"
+      height="31"
+      viewBox="0 0 31 31"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="15.5" cy="15.5" r="15.5" fill="#00B086" />
+      <path d="M6 15L13 22L24 11" stroke="white" stroke-width="3" />
+    </svg>
+  ),
+  deny: () => (
+    <svg
+      width="31"
+      height="31"
+      viewBox="0 0 31 31"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="15.5" cy="15.5" r="15.5" fill="#FF0000" />
+      <path d="M8.13745 7.75L22.8625 22.475" stroke="white" stroke-width="3" />
+      <path d="M7.75 22.8625L22.475 8.13745" stroke="white" stroke-width="3" />
+    </svg>
+  ),
 };
