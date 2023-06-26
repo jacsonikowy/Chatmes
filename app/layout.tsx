@@ -22,12 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Provider session={session}>
+        <Provider session={session}>
+          <ThemeProvider>
             <main>{children}</main>
             <Toaster />
-          </Provider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );
