@@ -1,18 +1,31 @@
 "use client";
 import React, { useState } from "react";
 import { Icons } from "./Icons";
-import { usePathname, useSearchParams } from "next/navigation";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { useToast } from "./ui/use-toast";
+import { z } from "zod";
 
 const InputMessage = ({ chatId }: { chatId: string }) => {
   const [message, setMessage] = useState("");
-
-  // const URL = usePathname().split("/");
-  // const chatId = URL[URL.length - 1];
-  // console.log(chatId);
+  const { toast } = useToast();
 
   const handleSend = async (text: string) => {
-    await axios.post("/api/message/send", { chatId, text });
+    try {
+      await axios.post("/api/message/send", { chatId, text });
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        // yeah i know that's terrible error handling
+        console.log(error.response?.data[0].message);
+        toast({
+          title: error.response?.data[0].message,
+          variant: "destructive",
+        });
+        return;
+      }
+      toast({
+        title: "Something went wrong",
+      });
+    }
   };
 
   return (

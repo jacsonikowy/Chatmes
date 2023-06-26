@@ -5,8 +5,7 @@ import InputMessage from "./InputMessage";
 import { useFriendStore } from "@/store";
 import TextMessage from "./TextMessage";
 import { useSession } from "next-auth/react";
-import { pusherClient, pusherServer } from "@/lib/pusher";
-import { useToast } from "./ui/use-toast";
+import { pusherClient } from "@/lib/pusher";
 import { toPusherKey } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 
@@ -16,11 +15,11 @@ const Chat = ({ chatId, data }: { chatId: string; data: Message[] }) => {
   const [messages, setMessages] = useState<Message[]>(data);
   const url = usePathname();
   console.log(url);
-  const { toast } = useToast();
 
   useEffect(() => {
     pusherClient.subscribe(toPusherKey(`chat:${chatId}:messages`));
     const bindHandler = ({ message }: { message: Message }) => {
+      console.log(message);
       setMessages((prev) => [...prev, message]);
     };
     pusherClient.bind(`messages`, bindHandler);
@@ -29,7 +28,7 @@ const Chat = ({ chatId, data }: { chatId: string; data: Message[] }) => {
       pusherClient.unsubscribe(toPusherKey(`chat:${chatId}:messages`));
       pusherClient.unbind(`messages`, bindHandler);
     };
-  }, [messages, chatId]);
+  }, [chatId]);
 
   if (friend.id === null) {
     return (
@@ -51,8 +50,8 @@ const Chat = ({ chatId, data }: { chatId: string; data: Message[] }) => {
         />
         <h1 className="text-[24px] font-semibold">{friend.name}</h1>
       </div>
-      <div className="ml-[25px] mb-[37px] mr-[52px] max-h-screen">
-        <div className="flex flex-col gap-[16px] p-6 h-[calc(100vh-210px)] overflow-y-scroll">
+      <div className="ml-[25px] mb-[37px] mr-[52px] max-h-screen max-w-full">
+        <div className="flex flex-col gap-[16px] p-6 h-[calc(100vh-210px)] max-w-full overflow-y-scroll">
           {messages.map((message: Message) => {
             return (
               <TextMessage

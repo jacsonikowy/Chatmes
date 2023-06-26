@@ -20,10 +20,14 @@ const TextMessage: FC<ITextMessage> = ({
     <div
       className={`${
         isCurrentUser ? "flex-row-reverse" : "flex"
-      } flex items-center gap-[8px]`}
+      } flex items-center gap-[8px] `}
     >
-      <div className={isCurrentUser ? "primaryText" : "secondaryText"}>
-        {text}
+      <div
+        className={`${
+          isCurrentUser ? "primaryText" : "secondaryText"
+        } max-w-[55ch]`}
+      >
+        <p className="overflow-hidden break-words">{text}</p>
         <p
           className={`text-[12px]
           ${isCurrentUser ? "text-white" : "text-slate-400"}`}
