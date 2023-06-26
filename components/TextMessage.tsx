@@ -2,6 +2,7 @@
 import Image from "next/image";
 import format from "date-fns/format";
 import React, { FC } from "react";
+import { formatTime } from "@/helpers/formatTime";
 
 interface ITextMessage {
   avatar: string;
@@ -32,7 +33,7 @@ const TextMessage: FC<ITextMessage> = ({
           className={`text-[12px]
           ${isCurrentUser ? "text-white" : "text-slate-400"}`}
         >
-          {format(timestamp, "HH:mm")}
+          {formatTime(timestamp)}
         </p>
       </div>
       <Image
