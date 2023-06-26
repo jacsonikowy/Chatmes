@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Icons } from "./Icons";
 import axios, { AxiosError } from "axios";
 import { useToast } from "./ui/use-toast";
-import { z } from "zod";
+import TextareaAutosize from "react-textarea-autosize";
 
 const InputMessage = ({ chatId }: { chatId: string }) => {
   const [message, setMessage] = useState("");
@@ -29,10 +29,11 @@ const InputMessage = ({ chatId }: { chatId: string }) => {
   };
 
   return (
-    <div className="flex gap-[20px] mt-[27px]">
-      <input
+    <div className="flex gap-[20px] mt-[12px]">
+      <TextareaAutosize
+        minRows={3}
+        maxRows={3}
         className="w-full border-[#b3b3b3] border-2 rounded-lg text-black"
-        type="text"
         placeholder="Type here your message..."
         onChange={(e) => {
           setMessage(e.currentTarget.value);
