@@ -1,35 +1,35 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
 import { useToast } from "@/components/ui/use-toast";
 
 const Page = () => {
-  const theme = useTheme();
+  const { theme, setTheme } = useTheme();
   const { toast } = useToast();
 
   const handleChangeDarkMode = (currentTheme: string) => {
-    if (currentTheme === "dark") {
-      theme.setTheme("light");
-      toast({
-        title: "Light Mode",
-        description: "Successfully changed to Light Mode",
-      });
-      return;
-    }
+    try {
+      if (currentTheme === "dark") {
+        setTheme("light");
+        toast({
+          title: "Light Mode",
+          description: "Successfully changed to Light Mode",
+        });
+        return;
+      }
 
-    if (currentTheme === "light") {
-      theme.setTheme("dark");
-      toast({
-        title: "Dark Mode",
-        description: "Successfully changed to Dark Mode",
-      });
-      return;
+      if (currentTheme === "light") {
+        setTheme("dark");
+        toast({
+          title: "Dark Mode",
+          description: "Successfully changed to Dark Mode",
+        });
+        return;
+      }
+    } catch (error) {
+      console.log(error);
     }
-
-    toast({
-      title: "Error",
-    });
   };
 
   return (
@@ -43,7 +43,7 @@ const Page = () => {
           <h3>Dark Mode:</h3>
           <Switch
             className="w-[40px]"
-            onClick={() => handleChangeDarkMode(theme.theme!)}
+            onClick={() => handleChangeDarkMode(theme!)}
           />
         </div>
       </div>
