@@ -8,6 +8,7 @@ import { userId } from "@/types/next-auth";
 import FriendRequest from "./FriendRequestBlock";
 import { Session } from "next-auth";
 import { useToast } from "./ui/use-toast";
+import axios from "axios";
 
 interface IncomingFriendRequests {
   senderId: userId;
@@ -51,6 +52,40 @@ const FriendRequests = ({
     };
   }, [session?.user.id, toast]);
 
+  const handleAccept = async (idToAdd: userId) => {
+    try {
+      await axios.post("/api/friends/accept", {
+        idToAdd: idToAdd,
+      });
+      toast({
+        title: "Accepted Friend request",
+        description: "Successfully accepted friend request",
+      });
+      setFriendRequests((prev) =>
+        prev.filter((friend) => friend.senderId !== idToAdd)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDeny = async (idToDeny: userId) => {
+    try {
+      await axios.post("/api/friends/deny", {
+        idToDeny: idToDeny,
+      });
+      toast({
+        title: "Denied friend request",
+        description: "You just denied friend request. How dare you!",
+      });
+      setFriendRequests((prev) =>
+        prev.filter((friend) => friend.senderId !== idToDeny)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="ml-[64px] mt-[72px]">
       <h3 className="font-medium text-[32px]">Search by e-mail</h3>
@@ -66,6 +101,8 @@ const FriendRequests = ({
                 key={request.senderId}
                 idToAdd={request.senderId}
                 mail={request.senderEmail}
+                handleAccept={handleAccept}
+                handleDeny={handleDeny}
               />
             );
           })}
