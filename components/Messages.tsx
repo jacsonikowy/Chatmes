@@ -50,9 +50,7 @@ const Messages = ({ friends }: { friends: IFriends[] }) => {
         </div>
       </div>
       <hr />
-      <div
-        className={`flex flex-col gap-[36px] ${isHidden ? "hidden" : "flex"}`}
-      >
+      <div className={`flex flex-col  ${isHidden ? "hidden" : "flex"}`}>
         {friends.map((friend) => {
           return (
             <User
