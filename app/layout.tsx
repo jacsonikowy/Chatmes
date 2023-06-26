@@ -1,10 +1,9 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
-import Theme from "@/components/Theme";
+import { ThemeProvider } from "@/components/Theme";
 import Provider from "@/components/Provider";
 import { Session } from "next-auth";
-import QueryProvider from "@/components/QueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,14 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Theme>
-          <QueryProvider>
-            <Provider session={session}>
-              {children}
-              <Toaster />
-            </Provider>
-          </QueryProvider>
-        </Theme>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Provider session={session}>
+            <main>{children}</main>
+            <Toaster />
+          </Provider>
+        </ThemeProvider>
       </body>
     </html>
   );
