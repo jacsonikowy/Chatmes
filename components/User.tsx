@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useEffect, useState } from "react";
+import React, { FC, HTMLAttributes, use, useEffect, useState } from "react";
 import Image from "next/image";
 import { Icons } from "./Icons";
 import { useFriendStore } from "@/store";
@@ -7,24 +7,26 @@ import { userId } from "@/types/next-auth";
 import { useRouter } from "next/navigation";
 import { chatHref } from "@/lib/utils";
 import { useSession } from "next-auth/react";
-import { db } from "../lib/db";
-import axios from "axios";
-import { getLatestMessage } from "@/helpers/get-latest-message";
 
-const User = ({
-  username,
-  message,
-  avatar,
-  active,
-  id,
-  email,
-}: {
+interface IUser extends HTMLAttributes<HTMLDivElement> {
   username: string;
   message: string;
   avatar: string;
   active: boolean;
   id: userId;
   email: string;
+  setHidden: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const User: FC<IUser> = ({
+  username,
+  message,
+  avatar,
+  active,
+  id,
+  email,
+  setHidden,
+  ...props
 }) => {
   const friend = useFriendStore((state) => state);
   const router = useRouter();
@@ -36,7 +38,8 @@ const User = ({
 
   return (
     <div
-      className="flex items-center w-full min-h-[50px] gap-[12px] py-[20px] pl-[28px] hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer"
+      {...props}
+      className="flex items-center w-full min-h-[50px] gap-[12px] py-[20px] pl-[28px] hover:bg-slate-50 dark:hover:bg-slate-600 cursor-pointer"
       onClick={() => {
         friend.setFriend({
           name: username,
@@ -45,6 +48,7 @@ const User = ({
           image: avatar,
         });
         router.replace(`/messages/chat/${chatHref(session?.user.id, id)}`);
+        setHidden(true);
       }}
     >
       <div className="relative">
@@ -63,7 +67,9 @@ const User = ({
       </div>
       <div className="flex flex-col">
         <p className="font-semibold text-[16px]">{username}</p>
-        <p className="font-medium text-[12px] text-secondary">{message}</p>
+        <p className="font-medium text-[12px] text-secondary dark:text-slate-300 text-slate-800">
+          {message}
+        </p>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import format from "date-fns/format";
 import React, { FC } from "react";
 import { formatTime } from "@/helpers/formatTime";
 
@@ -26,7 +25,7 @@ const TextMessage: FC<ITextMessage> = ({
       <div
         className={`${
           isCurrentUser ? "primaryText" : "secondaryText"
-        } max-w-[55ch]`}
+        } max-w-[35ch] sm:max-w-[55ch]`}
       >
         <p className="overflow-hidden break-words">{text}</p>
         <p
