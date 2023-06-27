@@ -15,7 +15,7 @@ const page = async ({ children }: { children: React.ReactNode }) => {
   const friends = await getFriendsByUserId(session.user.id);
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full overflow-x-hidden">
       <Messages friends={friends} />
       {children}
     </div>

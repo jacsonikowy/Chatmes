@@ -36,6 +36,7 @@ const Page = () => {
         <div className="w-full p-[32px]">
           <h3>Dark Mode:</h3>
           <Switch
+            checked={theme === "dark" ? true : false}
             className="w-[40px]"
             onClick={() => handleChangeDarkMode(theme as string)}
           />

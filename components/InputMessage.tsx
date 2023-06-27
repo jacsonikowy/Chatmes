@@ -43,14 +43,16 @@ const InputMessage = ({ chatId }: { chatId: string }) => {
           if (e.key === "Enter") {
             handleSend(message);
             setMessage("");
+            e.currentTarget.blur();
           }
         }}
       />
       <div
         className="cursor-pointer rounded-full"
-        onClick={() => {
+        onClick={(e) => {
           handleSend(message);
           setMessage("");
+          e.currentTarget.blur();
         }}
       >
         <Icons.send />

@@ -50,7 +50,7 @@ const Chat: FC<IChat> = ({ chatId, data }) => {
 
   return (
     <div className="w-full relative flex flex-col justify-between max-h-screen overflow-y-hidden">
-      <div className="flex gap-[25px] items-center w-full border-b px-[25px] pt-[10px] pb-[13px]">
+      <div className="flex gap-[25px] items-center w-full border-b px-[50px] sm:px-[25px] pt-[10px] pb-[13px]">
         <Image
           className="rounded-full"
           src={friend.image}
@@ -60,8 +60,8 @@ const Chat: FC<IChat> = ({ chatId, data }) => {
         />
         <h1 className="text-[24px] font-semibold">{friend.name}</h1>
       </div>
-      <div className="ml-[25px] mb-[37px] mr-[52px] max-h-screen max-w-full">
-        <div className="flex flex-col gap-[16px] p-6 h-[calc(100vh-240px)] max-w-full overflow-y-scroll">
+      <div className="ml-[25px] mb-[37px] mr-5 sm:mr-[52px] max-h-screen max-w-screen">
+        <div className="flex flex-col gap-[16px] p-0 py-3 sm:p-6 h-[calc(100vh-240px)] justify-center max-w-full overflow-y-scroll">
           {messages.map((message: Message) => {
             return (
               <TextMessage

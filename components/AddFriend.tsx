@@ -64,11 +64,11 @@ const AddFriend = () => {
         <input
           {...register("email")}
           name="email"
-          className="border-2 border-[#979797] shadow-lg rounded-lg"
+          className="border-2 border-[#979797] shadow-lg rounded-lg text-black"
           type="text"
           placeholder="you@example.com"
         />
-        <div className="absolute top-16 text-danger">
+        <div className="absolute top-16 text-destructive">
           {errors.email?.message}
         </div>
       </div>
