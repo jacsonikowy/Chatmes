@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Icons } from "./Icons";
 import { useFriendStore } from "@/store";
 import { userId } from "@/types/next-auth";
-import { useRouter } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import { chatHref } from "@/lib/utils";
 import { useSession } from "next-auth/react";
 
@@ -32,10 +32,6 @@ const User: FC<IUser> = ({
   const router = useRouter();
   const { data: session } = useSession();
 
-  if (!session) {
-    return;
-  }
-
   return (
     <div
       {...props}
@@ -47,7 +43,7 @@ const User: FC<IUser> = ({
           id: id,
           image: avatar,
         });
-        router.replace(`/messages/chat/${chatHref(session?.user.id, id)}`);
+        router.replace(`/messages/chat/${chatHref(session?.user.id!, id)}`);
         setHidden(true);
       }}
     >

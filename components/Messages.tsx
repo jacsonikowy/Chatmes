@@ -6,7 +6,6 @@ import { ChevronsRight } from "lucide-react";
 import { userId } from "@/types/next-auth";
 import CurrentUser from "./CurrentUser";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 
 interface IFriends {
   name: string;
@@ -32,10 +31,6 @@ const Messages = ({ friends }: { friends: IFriends[] }) => {
         <hr />
       </div>
     );
-  }
-
-  if (!session) {
-    redirect("/");
   }
 
   return (
@@ -86,7 +81,7 @@ const Messages = ({ friends }: { friends: IFriends[] }) => {
         <div className="">
           <CurrentUser
             avatar={session?.user.image!}
-            name={session.user.name!}
+            name={session?.user.name!}
           />
         </div>
       </div>

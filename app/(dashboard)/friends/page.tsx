@@ -1,13 +1,8 @@
-import FriendRequest from "@/components/FriendRequestBlock";
-import Sidebar from "@/components/Sidebar";
-import React, { useEffect } from "react";
-import AddFriend from "@/components/AddFriend";
+import React from "react";
 import { db } from "@/lib/db";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import { userId } from "@/types/next-auth";
-import { pusherClient } from "@/lib/pusher";
-import { toPusherKey } from "@/lib/utils";
 import FriendRequests from "@/components/FriendRequests";
 
 const page = async () => {

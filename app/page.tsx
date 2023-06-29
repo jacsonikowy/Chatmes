@@ -1,17 +1,21 @@
 import Button from "@/components/Button";
+import { authOptions } from "@/lib/authOptions";
 import { Github } from "lucide-react";
 import { Twitter } from "lucide-react";
 import { RocketIcon } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
-  const session = await getServerSession();
-  console.log(session);
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    redirect("/messages");
+  }
 
   return (
     <main>
-      {session?.user?.name}
       <div className="flex gap-4 absolute top-0 right-0 p-6">
         <Link href={"http://www.twitter.com/shitgem1"}>
           <Twitter />
